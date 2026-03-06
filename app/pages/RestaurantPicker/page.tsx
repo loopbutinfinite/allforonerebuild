@@ -38,7 +38,7 @@ const RestaurantPicker = () => {
     return (
         <div>
             <main className="min-h-screen bg-linear-to-r from-cyan-500 to-blue-500 pt-10">
-                <h1 className="grid place-items-center text-6xl font-[silkscreen] text-[#a1d5ed] drop-shadow-[0_2px_2px_rgba(0,0,0,2)] text-center">Restaurant Picker</h1>
+                <h1 className="grid place-items-center text-5xl md:text-6xl font-[silkscreen] text-[#a1d5ed] drop-shadow-[0_2px_2px_rgba(0,0,0,2)] text-center">Restaurant Picker</h1>
                 <div className='grid place-items-center'>
                     <p className="text-white bg-gray-600 px-3 mt-5 py-1 w-[80%] mx-auto text-center">Welcome to the Restaurant Picker. Click one of the buttons below that correspond to a food category. When one of the buttons are clicked, a random restaurant that relates to that category will populate below.</p>
                     <Button onClick={() => handleButtonClick("indian")} className="mt-5 relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group px-10 text-2xl border-2 border-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none">Indian

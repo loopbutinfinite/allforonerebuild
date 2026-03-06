@@ -25,7 +25,7 @@ const GreaterThanLessThan = () => {
     return (
         <div>
             <main className='min-h-screen bg-linear-to-r from-cyan-500 to-blue-500 pt-10'>
-                <h1 className="grid place-items-center text-6xl font-[silkscreen] text-[#a1d5ed] drop-shadow-[0_2px_2px_rgba(0,0,0,2)]">Greater Than Less Than</h1>
+                <h1 className="grid place-items-center text-6xl font-[silkscreen] text-[#a1d5ed] drop-shadow-[0_2px_2px_rgba(0,0,0,2)] text-center">Greater Than Less Than</h1>
                 <div className="grid place-items-center my-5">
                     <p className="text-white bg-gray-600 px-3 py-1 w-[80%] mx-auto text-center">Input two numbers below in the input fields and click the submit button when done. You will be told the relation of your two number inputs and whether one number is greater than, less than or equal to.</p>
                     {/* <input id="userNumberInput1" className="bg-white mt-5" type="text" placeholder="Enter your first number"> */}

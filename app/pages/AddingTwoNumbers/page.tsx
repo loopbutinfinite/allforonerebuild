@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { Card, TextInput } from 'flowbite-react';
+import {FetchAddTwoNumbers} from "@/app/utils/DataService"
 
 const AddingTwoNumbers = () => {
 
@@ -16,17 +17,9 @@ const AddingTwoNumbers = () => {
         // const data = await response.text();
         // console.log(data);
         // return data;
-        try { //This try catch is here to look for errors and debugging purposes so it does not break the project.
-            const FetchData = async () => {
-                const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/AddingTwoNumbers/Sum/${firstUserNum}/${secondUserNum}`);
-                const data = await response.text();
-                console.log(data);
-                return data;
-            };
-            setSum(await FetchData()); //Here we are using the set function to set the new value of sum to equal our fetched data with users' both number inputs.
-        } catch (error) {
-            console.log("Error Fetching data", error);
-        }
+        const data = await FetchAddTwoNumbers(firstUserNum, secondUserNum);
+
+        setSum(data);
     };
 
     return (
