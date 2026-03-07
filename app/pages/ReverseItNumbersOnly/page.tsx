@@ -3,6 +3,7 @@
 import { TextInput } from 'flowbite-react';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { FetchReverseItNumbersOnly } from '@/app/utils/DataService';
 
 const ReverseItNumbersOnly = () => {
     const [userNum, setUserNum] = useState("");
@@ -10,19 +11,10 @@ const ReverseItNumbersOnly = () => {
 
     useEffect(() => {
         const FetchAndSetData = async () => {
-            try {
-                const FetchData = async () => {
-                    const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/ReverseItNumbersOnly/srebmuN/${userNum}`);
-                    const data = await response.text();
-                    return data;
-                };
-                const result = await FetchData();
-                setNumReversed(result);
-            } catch (error) {
-                console.log("Error Fetching data", error);
-            }
+            const result = await FetchReverseItNumbersOnly(userNum);
+            setNumReversed(result);
         };
-        if(userNum){
+        if (userNum) {
             FetchAndSetData();
         }
     }, [userNum])

@@ -3,22 +3,14 @@
 import { TextInput } from 'flowbite-react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { FetchMagic8Ball } from '@/app/utils/DataService';
 
 const Magic8Ball = () => {
     const [question, setQuestion] = useState("");
     const [magicResponse, setMagicResponse] = useState("");
 
     const FetchAndSetData = async () => {
-        try {
-            const FetchData = async () => {
-                const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/Magic8Ball/Magic8/${question}`);
-                const data = response.text();
-                return data;
-            };
-            setMagicResponse(await FetchData());
-        } catch (error) {
-            console.log("Error Fetching data", error);
-        }
+        setMagicResponse(await FetchMagic8Ball(question));
     };
 
 

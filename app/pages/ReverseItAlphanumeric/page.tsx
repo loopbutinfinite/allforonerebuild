@@ -3,6 +3,7 @@
 import { TextInput } from 'flowbite-react';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { FetchReverseItAlphanumeric } from '@/app/utils/DataService';
 
 const ReverseItAlphanumeric = () => {
   const [userString, setUserString] = useState("");
@@ -10,21 +11,11 @@ const ReverseItAlphanumeric = () => {
 
   useEffect(() => {
     const FetchAndSetData = async () => {
-      try {
-        const FetchData = async () => {
-          const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/ReverseItAlphanumeric/Alphanumeric/${userString}`);
-          const data = response.text();
-          return data;
-        };
-        const result = await FetchData();
+      const result = await FetchReverseItAlphanumeric(userString);
 
-        setReversed(result);
-
-      } catch (error) {
-        console.log("Error Fetching data", error);
-      }
+      setReversed(result);
     };
-    if(userString){
+    if (userString) {
       FetchAndSetData();
     }
   }, [userString])

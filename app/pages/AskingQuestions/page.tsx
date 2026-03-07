@@ -3,6 +3,7 @@
 import { TextInput } from 'flowbite-react';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { FetchAskingQuestions } from '@/app/utils/DataService';
 
 const AskingQuestions = () => {
     const [questionOne, setQuestionOne] = useState("");
@@ -10,16 +11,7 @@ const AskingQuestions = () => {
     const [result, setResult] = useState("");
 
     const FetchAndSetData = async () => {
-        try {
-            const FetchData = async () => {
-                const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/AskingQuestions/Responses/${questionOne}/${questionTwo}`);
-                const data = await response.text();
-                return data;
-            };
-            setResult(await FetchData());
-        } catch (error) {
-            console.log("Error Fetching data", error)
-        }
+            setResult(await FetchAskingQuestions(questionOne, questionTwo));
     };
 
     return (

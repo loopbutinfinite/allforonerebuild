@@ -3,6 +3,7 @@
 import { TextInput } from 'flowbite-react'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { FetchMadLib } from '@/app/utils/DataService';
 
 const MadLib = () => {
     const [name, setName] = useState("");
@@ -11,16 +12,7 @@ const MadLib = () => {
     const [story, setStory] = useState("");
 
     const FetchAndSetData = async () => {
-        try {
-            const FetchData = async () => {
-                const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/MadLib/MadLib/${name}/${occupation}/${object}`);
-                const data = await response.text();
-                return data;
-            };
-            setStory(await FetchData());
-        } catch (error) {
-            console.log("Error Fetching data", error)
-        }
+            setStory(await FetchMadLib(name, occupation, object));
     };
 
     return (

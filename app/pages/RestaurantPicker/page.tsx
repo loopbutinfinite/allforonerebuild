@@ -3,6 +3,7 @@
 import { Button, Card } from 'flowbite-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { FetchRestaurantPicker } from '@/app/utils/DataService';
 
 const RestaurantPicker = () => {
     const [foodSelection, setFoodSelection] = useState("");
@@ -20,16 +21,7 @@ const RestaurantPicker = () => {
         if (!foodSelection) return;
 
         const fetchData = async () => {
-            try {
-                // To help with UX, clear the old name so they know it's loading
-                setRestaurant("");
-
-                const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/RestaurantPicker/Restaurant/${foodSelection}`);
-                const data = await response.text();
-                setRestaurant(data);
-            } catch (error) {
-                setRestaurant("");
-            }
+            setRestaurant(await FetchRestaurantPicker(foodSelection));
         };
 
         fetchData();

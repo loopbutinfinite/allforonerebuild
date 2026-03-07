@@ -3,6 +3,7 @@
 import { TextInput } from 'flowbite-react';
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { FetchHelloWorld } from '@/app/utils/DataService';
 
 const HelloWorld = () => {
     const [name, setName] = useState("");
@@ -10,20 +11,11 @@ const HelloWorld = () => {
 
     useEffect(() => {
         const FetchAndSetData = async () => {
-            try {
-                const FetchData = async () => {
-                    const response = await fetch(`https://allforoneapibe-bthaa3dfd2aabpgm.westus3-01.azurewebsites.net/HelloWorld/Greeting/${name}`);
-                    const data = await response.text();
-                    return data;
-                };
-                const result = await FetchData();
-                setDisplayName(result);
-            }
-          catch (error) {
-                console.log("Error Fetching Data", error)
-            }
+            const result = await FetchHelloWorld(name);
+            setDisplayName(result);
+
         };
-        if(name){
+        if (name) {
             FetchAndSetData();
         }
     }, [name]);
